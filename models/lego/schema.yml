@@ -1,0 +1,21 @@
+version: 2
+
+models:
+  - name: unique_parts
+    description: The part numbers which are only used in one set 
+    columns:
+      - name: part_num
+        tests: 
+          - unique
+  - name: parts_per_set
+    description: Parts associated with a set
+    columns:
+      - name: theme_name
+        data_tests:
+          - not_null
+      - name: set_name
+        data_tests:
+          - not_null
+      - name: set_year
+        data_tests:
+          - not_null
