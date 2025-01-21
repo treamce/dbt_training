@@ -7,7 +7,7 @@ models:
       - name: part_num
         tests: 
           - unique
-  - name: parts_per_set
+  - name: parts_set
     description: Parts associated with a set
     columns:
       - name: theme_name
