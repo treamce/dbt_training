@@ -1,0 +1,26 @@
+version: 2
+
+sources:
+  - name: office_weather
+    schema: DBT_TMCELHONE
+    tables:
+      - name: weather_readings
+
+models:
+  - name: stg_weather_data
+    tests:
+      - unique:
+          column_name: "time || '-' || office"
+    columns:
+      - name: lat
+        tests:
+          - not_null
+          - dbt_expectations.expect_column_values_to_be_between:
+              min_value: -90
+              max_value: 90
+      - name: long
+        tests:
+          - not_null
+          - dbt_expectations.expect_column_values_to_be_between:
+              min_value: -180
+              max_value: 180
